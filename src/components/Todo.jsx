@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import TodoForm from './TodoForm';
 import { RiEditFill } from 'react-icons/ri'
 import { RiCloseCircleLine } from 'react-icons/ri'
-import TodoList from './TodoList';
 
 
 function Todo({ todos, completeTodo, removeTodo, updateTodo }) {

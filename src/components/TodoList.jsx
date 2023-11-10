@@ -1,9 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TodoForm from './TodoForm';
 import Todo from './Todo';
 
 function TodoList() {
-    const [todos, setTodos] = useState([]);
+
+    // const [todos, setTodos] = useState([]);
+
+    let initialTodo;
+    if (localStorage.getItem('todos') === null) {
+        initialTodo = []
+    } else {
+        initialTodo = JSON.parse(localStorage.getItem('todos'))
+    }
+
+    const [todos, setTodos] = useState(initialTodo);
+
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(todos))
+    },[todos])
 
     const addTodo = (todo) => {
         //to check empty input 
@@ -11,8 +25,9 @@ function TodoList() {
             return
         }
         const newTodos = [todo, ...todos];
-        console.log(newTodos)
-        setTodos(newTodos)
+        // console.log(newTodos)
+        setTodos(newTodos);
+        localStorage.setItem('todos', JSON.stringify(newTodos));
 
     }
 
@@ -37,7 +52,7 @@ function TodoList() {
             return todo
         })
 
-        console.log(updatedTodos)
+        // console.log(updatedTodos)
         setTodos(updatedTodos)
     }
     return (
