@@ -57,7 +57,7 @@ function TodoList() {
     }
     return (
         <div>
-            <h1>To do App</h1>
+            <h1>"Prioritize & Achieve: Your To-Do Hub"</h1>
             <TodoForm onSubmit={addTodo} />
             <Todo todos={todos} completeTodo={completeTodo} removeTodo={removeTodo} updateTodo={updateTodo} />
         </div>
